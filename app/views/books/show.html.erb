@@ -1,0 +1,10 @@
+<%= render "bricks/navbar" %>
+<div class="container">
+  <h2 class="my-4">Présentation du livre :</h2>
+  <h3><%= @book.title %></h3>
+  <p><%= link_to "Revenir à la liste des livres", books_path %></p>
+  <%= simple_form_for @book, url: books_update_path(@book.id), method: 'patch' do |f| %>
+    <%= f.input :title, label: false %>
+    <%= f.button :submit, "Mise à jour", input_html: {class: "btn btn-primary"} %>
+  <% end %>
+</div>

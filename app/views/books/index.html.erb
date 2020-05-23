@@ -3,7 +3,7 @@
   <h1 class="mt-4">Liste des livres :</h1>
   <ul>
     <% @books.each do |book| %>
-    <li><%= book.title %></li>
+    <li><%= link_to book.title, books_show_path(book.id) %></li>
     <% end %>
   </ul>
   <div class="mt-2">
