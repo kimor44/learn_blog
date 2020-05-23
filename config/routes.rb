@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'books' => 'books#index'
+  post 'books' => 'books#create'
   root 'pages#home'
   get 'test' => 'pages#test'
   get 'castor' => 'pages#castor'
