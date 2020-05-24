@@ -5,7 +5,7 @@ class BooksController < ApplicationController
 
   def create
     Book.create(title: params[:title])
-    redirect_to books_path
+    redirect_to books_index_path
   end
 
   def show
@@ -15,5 +15,10 @@ class BooksController < ApplicationController
   def update
     Book.find(params[:id]).update title: params[:book][:title]
     redirect_to books_show_path(params[:id])
+  end
+
+  def destroy
+    Book.find(params[:id]).destroy
+    redirect_to books_index_path
   end
 end
