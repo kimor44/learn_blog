@@ -1,7 +1,6 @@
 <%= render "bricks/navbar" %>
 <div class="container">
   <h2 class="my-4">Présentation du livre :</h2>
-  <p><%= link_to "Revenir à la liste des livres", books_path %></p>
   <h3 class="font-italic">"<%= @book.title %>"</h3>
     <%= simple_form_for @book, url: books_update_path(@book.id), input_html: {class: "col-6"}, method: 'patch' do |f| %>
       <%= f.input :title, label: false %>
