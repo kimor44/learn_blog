@@ -1,0 +1,15 @@
+<%= render "bricks/navbar" %>
+<div class="container">
+  <h1 class="mt-4">Liste des livres :</h1>
+  <ul>
+    <% @books.each do |book| %>
+    <li><%= link_to book.title, books_show_path(book.id) %></li>
+    <% end %>
+  </ul>
+  <div class="mt-2">
+    <%= form_tag "/books", method: "post" do %>
+      <input type="text", name="title" >
+      <input type="submit", value="Ajouter un livre" >
+    <% end %>
+  </div>
+</div>
