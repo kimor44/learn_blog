@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   patch 'books/:id', to: 'books#update', as: 'books_update'
   delete 'books/:id', to: 'books#destroy', as: 'books_destroy'
 
+  get 'manage/first_page', to: 'manage#first_page', as: 'manage_first_page'
   get 'test' => 'pages#test'
   get 'castor' => 'pages#castor'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

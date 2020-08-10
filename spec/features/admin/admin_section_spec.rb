@@ -9,6 +9,13 @@ RSpec.feature 'admin::manage', type: :feature do
       it 'arrives on the main page' do
         expect(current_path).to eq(root_path)
       end
+
+      context 'and goes to manage page' do
+        before { visit manage_first_page_path }
+        it 'is on manage page' do
+          expect(current_path).to eq('/manage/first_page')
+        end
+      end
     end
   end
 end

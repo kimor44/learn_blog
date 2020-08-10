@@ -15,6 +15,11 @@
         <li class="nav-item">
           <%= link_to "Castor", castor_path, class: "nav-link text-white" %>
         </li>
+        <% if current_user.admin? %>
+          <li class="nav-item justify-right">
+            <%= link_to "Manage", manage_first_page_path, class: "nav-link text-white" %>
+          </li>
+        <% end %>
         <% if current_user %>
           <li class="nav-item justify-right">
             <%= link_to "logout", destroy_user_session_path, method: 'delete', class: "nav-link text-white" %>
