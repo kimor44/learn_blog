@@ -1,0 +1,7 @@
+<div class="container">
+  <%= simple_form_for @first_page, url: manage_create_first_page_path do |fp| %>
+    <%= fp.label 'title' %>
+    <%= fp.input :title, label: false %>
+    <%= fp.submit 'Submit' %>
+  <% end %>
+</div>
