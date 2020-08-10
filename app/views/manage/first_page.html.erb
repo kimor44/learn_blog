@@ -1,0 +1,9 @@
+<div class="container">
+  <%= link_to 'new first page', manage_new_first_page_path %>
+
+  <ul class="first_pages">
+    <% @first_pages.each do |first_page| %>
+      <li><%= first_page.title %></li>
+    <% end %>
+  </ul>
+</div>

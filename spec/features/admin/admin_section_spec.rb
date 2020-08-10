@@ -15,6 +15,15 @@ RSpec.feature 'admin::manage', type: :feature do
         it 'is on manage page' do
           expect(current_path).to eq('/manage/first_page')
         end
+
+        it 'adds a new first_page' do
+          click_on 'new first page'
+          fill_in 'first_page_title', with: 'My first page'
+          click_button 'Submit'
+
+          expect(current_path).to eq(manage_first_page_path)
+          expect(page).to have_css '.first_pages li', text: 'My first page'
+        end
       end
     end
   end
