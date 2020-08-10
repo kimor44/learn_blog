@@ -26,5 +26,23 @@ RSpec.feature 'admin::manage', type: :feature do
         end
       end
     end
+
+    context 'user is not logged' do
+      it 'redirect to log in page' do
+        visit manage_first_page_path
+        expect(current_path).to eq(new_user_session_path)
+      end
+    end
+
+    context 'user is not an admin' do
+      before do
+        user.update!(admin: false)
+        sign_in(user: user)
+      end
+      it 'redirect to home page' do
+        visit manage_first_page_path
+        expect(current_path).to eq(root_path)
+      end
+    end
   end
 end
