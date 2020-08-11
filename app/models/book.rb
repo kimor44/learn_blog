@@ -1,3 +1,11 @@
 class Book < ActiveRecord::Base
   belongs_to :category
+
+  validates :title, presence: {
+    message: "Can't be blank"
+  }
+
+  validates :title, uniqueness: {
+    message: "Must be unique"
+  }
 end
