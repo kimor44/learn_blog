@@ -3,12 +3,17 @@
   <h1 class="mt-4">Liste des livres :</h1>
   <ul>
     <% @books.each do |book| %>
-    <li><%= link_to book.title, books_show_path(book.id) %></li>
+    <li><%= link_to book.title, books_show_path(book.id) %> (<%= book.category.title unless book.category.nil? %>)</li>
     <% end %>
   </ul>
   <div class="mt-2">
     <%= form_tag "/books", method: "post" do %>
-      <input type="text", name="title" >
+      <input type="text", name="title" placeholder="title" >
+      <select name="category_id">
+        <% @categories.each do |category| %>
+          <option value="<%= category.id %>"><%= category.title %></option>
+        <% end %>
+      </select>
       <input type="submit", value="Ajouter un livre" >
     <% end %>
   </div>
