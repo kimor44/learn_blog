@@ -17,7 +17,7 @@
         </li>
         <% if current_user.admin? %>
           <li class="nav-item justify-right">
-            <%= link_to "Manage", manage_first_page_path, class: "nav-link text-white" %>
+            <%= link_to "Manage", manage_index_path, class: "nav-link text-white" %>
           </li>
         <% end %>
         <% if current_user %>
