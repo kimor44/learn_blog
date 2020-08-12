@@ -5,7 +5,7 @@ class BlogController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @comments = Comment.where(article_id: params[:id]).order(created_at: :desc)
+    @comments = @article.comments.order(created_at: :desc)
     @comment = Comment.new
   end
 
