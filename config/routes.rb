@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
   resources :articles, path: '/manage/articles'
 
+  get 'blog', to: 'blog#index', as: 'blog_index'
+  get 'blog/:id', to: 'blog#show', as: 'blog_show'
+
   get 'test' => 'pages#test'
   get 'castor' => 'pages#castor'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

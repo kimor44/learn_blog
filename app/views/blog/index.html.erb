@@ -1,0 +1,9 @@
+<%= render "bricks/navbar" %>
+<div class="container">
+  <h1>List of articles</h1>
+  <ul class="articles">
+    <% @articles.each do |article| %>
+      <li><%= link_to article.title, blog_show_path(id: article.id) %></li>
+    <% end %>
+  </ul>
+</div>
