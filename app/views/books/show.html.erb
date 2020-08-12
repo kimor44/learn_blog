@@ -1,9 +1,10 @@
 <%= render "bricks/navbar" %>
 <div class="container">
   <h2 class="my-4">Présentation du livre :</h2>
-  <h3 class="font-italic">"<%= @book.title %>"</h3>
+  <h3 class="font-italic">"<%= @book.title_was %>"</h3>
     <%= simple_form_for @book, url: books_update_path(@book.id), input_html: {class: "col-6"}, method: 'patch' do |f| %>
       <%= f.input :title, label: false %>
+      <%= f.select :category_id, @categories.map { |c| [c.title, c.id] } %>
       <%= f.button :submit, "Mise à jour", class: "w-50 btn btn-primary" %>
     <% end %>
     <%= simple_form_for @book, url: books_destroy_path(@book.id), input_html: {class: "col-6"}, method: 'delete' do |f| %>

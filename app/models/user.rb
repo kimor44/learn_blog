@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :articles
+  has_many :comments
+
+  accepts_nested_attributes_for :articles, :comments
 end

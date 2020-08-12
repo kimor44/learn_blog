@@ -14,7 +14,7 @@ RSpec.feature 'blog', type: :feature do
       end
 
       context 'and goes to blog section' do
-        let(:article) { Article.first }
+        let(:article) { Article.last }
         before { click_on 'Blog' }
         it 'is on right page' do
           expect(current_path).to eq(blog_index_path)
@@ -24,11 +24,38 @@ RSpec.feature 'blog', type: :feature do
           expect(page).to have_css '.articles li', text: 'First article'
         end
 
-        it 'clicks on one of them' do
-          click_on 'First article'
+        context 'clicks on an article' do
+          before { click_on 'First article' }
 
-          expect(current_path).to eq(blog_show_path(id: article.id))
-          expect(page).to have_css '.author', text: 'coucou@gmail.com'
+          it 'sees only the selected article' do
+            expect(current_path).to eq(blog_show_path(id: article.id))
+            expect(page).to have_css '.author', text: 'coucou@gmail.com'
+          end
+
+          context 'adds a comment' do
+            before do
+              fill_comment_form(comment: 'A very beautiful comment')
+            end
+
+            it 'redirects to the same page' do
+              expect(current_path).to eq(blog_show_path(id: article.id))
+            end
+
+            it 'can see his new comment' do
+              expect(page).to have_css '.comments li', text: 'A very beautiful comment'
+            end
+          end
+
+          context 'can\'t add an empty comment' do
+            before do
+              fill_comment_form(comment: '')
+            end
+
+            it 'can\'t see his new comment' do
+              expect(page).not_to have_css 'h3', text: 'All the comments'
+              expect(page).not_to have_css '.commenter strong', text: 'coucou@gmail.com'
+            end
+          end
         end
       end
     end
