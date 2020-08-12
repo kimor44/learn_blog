@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'manage/new_first_page', to: 'manage#new_first_page', as: 'manage_new_first_page'
   post 'manage/create_first_page', to: 'manage#create_first_page', as: 'manage_create_first_page'
 
+  resources :articles, path: '/manage/articles'
+
   get 'test' => 'pages#test'
   get 'castor' => 'pages#castor'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
