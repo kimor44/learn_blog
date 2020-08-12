@@ -45,6 +45,17 @@ RSpec.feature 'blog', type: :feature do
               expect(page).to have_css '.comments li', text: 'A very beautiful comment'
             end
           end
+
+          context 'can\'t add an empty comment' do
+            before do
+              fill_comment_form(comment: '')
+            end
+
+            it 'can\'t see his new comment' do
+              expect(page).not_to have_css 'h3', text: 'All the comments'
+              expect(page).not_to have_css '.commenter strong', text: 'coucou@gmail.com'
+            end
+          end
         end
       end
     end
