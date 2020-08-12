@@ -1,0 +1,6 @@
+<%= render "bricks/navbar" %>
+<div class="container">
+  <h2><%= @article.title %></h2>
+  <p><%= @article.body %></p>
+  <span class="author">by : <strong><%= @article.user.email %></strong></span>
+</div>

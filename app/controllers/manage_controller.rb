@@ -1,6 +1,9 @@
 class ManageController < ApplicationController
   before_action :authenticate_user!, :is_admin?
 
+  def index
+  end
+  
   def first_page
     @first_pages = FirstPage.all
   end
