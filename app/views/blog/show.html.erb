@@ -10,6 +10,8 @@
       <%= f.button :submit, "Add new comment", class: "w-50 btn btn-primary" %>
     <% end %>
   <% end %>
+  <%= link_to "< Prev", blog_show_path(prev_article), class: "btn btn-secondary text-white" unless prev_article.nil? %>
+  <%= link_to "Next >", blog_show_path(next_article), class: "btn btn-secondary text-white" unless next_article.nil? %>
   <% @comments = @article.comments %>
   <% unless @comments.empty? %>
     <h3>All the comments</h3>
