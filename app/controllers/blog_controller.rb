@@ -5,13 +5,11 @@ class BlogController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @comments = @article.comments.order(created_at: :desc)
     @comment = Comment.new
   end
 
   def create_comment
     @article = Article.find(params[:article_id])
-    @comments = @article.comments.order(created_at: :desc)
 
     @comment = Comment.create(comment_params)
     if @comment.update(article_id: params[:article_id], user_id: params[:user_id])
