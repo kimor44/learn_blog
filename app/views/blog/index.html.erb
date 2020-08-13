@@ -3,7 +3,10 @@
   <h1>List of articles</h1>
   <ul class="articles">
     <% @articles.each do |article| %>
-      <li><%= link_to article.title, blog_show_path(id: article.id) %></li>
+      <li class="list-group-item">
+        <%= link_to article.title, blog_show_path(id: article.id), class: 'stretched-link' %>
+        <span class="italic">(<%= article.comments.size %> comments)</span>
+      </li>
     <% end %>
   </ul>
 </div>
