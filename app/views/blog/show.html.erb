@@ -1,7 +1,7 @@
 <%= render "bricks/navbar" %>
 <div class="container">
   <h2><%= @article.title %></h2>
-  <p><%= @article.body %></p>
+  <%= simple_format h(@article.body) %>
   <span class="author">by : <strong><%= @article.user.email %></strong></span>
   <% if current_user %>
     <h3>Add a comment</h3>
@@ -19,9 +19,7 @@
       <ul class="list-group">
         <% @comments.order(created_at: :desc).each do |comment| %>
           <li class="list-group-item <%= 'border border-info' if current_user == comment.user %>">
-            <p style="font-size: 1.5em;">
-              <%= comment.content %>
-            </p>
+            <%= simple_format(h(comment.content), style: 'font-size: 1.5em;') %>
             <p class="commenter">
               <strong><%= comment.user.email %></strong> on <i><%= comment.created_at.strftime("%d/%m/%Y %H:%M") %></i>
             </p>
