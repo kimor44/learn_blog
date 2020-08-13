@@ -1,9 +1,9 @@
 module BooksHelper
   def prev_book
-    Book.where("id < #{params[:id]}").maximum(:id)
+    Book.prev_book(params[:id])
   end
 
   def next_book
-    Book.where("id > #{params[:id]}").minimum(:id)
+    Book.next_book(params[:id])
   end
 end

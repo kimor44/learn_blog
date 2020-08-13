@@ -12,4 +12,6 @@ class Book < ActiveRecord::Base
   scope :detective, -> { where(category_id: 1)}
   scope :thriller, -> { where(category_id: 4)}
   scope :with_murder, -> { where(category_id: [1, 4] )}
+  scope :prev_book, ->(book_id) { where("id < ?", book_id).maximum(:id) }
+  scope :next_book, ->(book_id) { where("id > ?", book_id).minimum(:id) }
 end

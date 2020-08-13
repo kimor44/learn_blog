@@ -10,6 +10,6 @@
     <%= simple_form_for @book, url: books_destroy_path(@book.id), input_html: {class: "col-6"}, method: 'delete' do |f| %>
       <%= f.button :submit, "Supprimer", class: "mt-3 w-50 btn btn-danger", data: {confirm: "Sûr ?"} %>
     <% end %>
-    <%= link_to "< Prev", books_show_path(prev_book), class: "btn btn-secondary" unless prev_book.nil? %>
-    <%= link_to "Next >", books_show_path(next_book), class: "btn btn-secondary" unless next_book.nil? %>
+    <%= link_to "< Prev", books_show_path(prev_book), class: "btn btn-secondary text-white" unless prev_book.class !=  Integer %>
+    <%= link_to "Next >", books_show_path(next_book), class: "btn btn-secondary text-white" unless next_book.class !=  Integer %>
 </div>

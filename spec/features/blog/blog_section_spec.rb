@@ -32,7 +32,11 @@ RSpec.feature 'blog', type: :feature do
             expect(page).to have_css '.author', text: 'coucou@gmail.com'
           end
 
-          context 'adds a comment' do
+          it 'sees the comment form' do
+            expect(page).to have_selector("#comment_content")
+          end
+
+          context 'Adds a comment' do
             before do
               fill_comment_form(comment: 'A very beautiful comment')
             end
@@ -46,7 +50,7 @@ RSpec.feature 'blog', type: :feature do
             end
           end
 
-          context 'can\'t add an empty comment' do
+          context 'Adds an empty comment' do
             before do
               fill_comment_form(comment: '')
             end
@@ -55,8 +59,24 @@ RSpec.feature 'blog', type: :feature do
               expect(page).not_to have_css 'h3', text: 'All the comments'
               expect(page).not_to have_css '.commenter strong', text: 'coucou@gmail.com'
             end
+
+            it 'displays an error message' do
+              expect(page).to have_text 'Can\'t be blank'
+            end
           end
         end
+      end
+    end
+
+    context 'User is not logged' do
+      before do
+        Article.create(title: 'First article', body: 'Some text long text.....', user_id: user.id)
+        visit blog_index_path
+        click_on 'First article'
+      end
+
+      it 'can\'t see the comment form' do
+        expect(page).not_to have_selector("#comment_content")
       end
     end
   end
