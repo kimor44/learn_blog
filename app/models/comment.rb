@@ -5,4 +5,7 @@ class Comment < ApplicationRecord
   validates :content, presence: {
     message: "Can't be blank"
   }
+
+  validates :article_id, presence: true
+  validates :user_id, presence: true
 end
