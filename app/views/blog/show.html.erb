@@ -5,7 +5,7 @@
   <span class="author">by : <strong><%= @article.user.email %></strong></span>
   <% if current_user %>
     <h3>Add a comment</h3>
-    <%= simple_form_for @comment, url: blog_create_comment_path(article_id: @article.id, user_id: current_user.id), input_html: {class: "col-6"}, method: 'post' do |f| %>
+    <%= simple_form_for @comment, url: blog_create_comment_path(article_id: @article.id), input_html: {class: "col-6"}, method: 'post' do |f| %>
       <%= f.input :content, label: false %>
       <%= f.button :submit, "Add new comment", class: "w-50 btn btn-primary" %>
     <% end %>

@@ -12,7 +12,7 @@ class BlogController < ApplicationController
     @article = Article.find(params[:article_id])
 
     @comment = Comment.create(comment_params)
-    if @comment.update(article_id: params[:article_id], user_id: params[:user_id])
+    if @comment.update(article_id: params[:article_id], user_id: current_user.id)
       redirect_to blog_show_path(id: params[:article_id])
     else
       render :show

@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   get 'blog', to: 'blog#index', as: 'blog_index'
   get 'blog/article/:id', to: 'blog#show', as: 'blog_show'
-  post 'blog/create_comment/:article_id/:user_id', to: 'blog#create_comment', as: 'blog_create_comment'
+  post 'blog/create_comment/:article_id', to: 'blog#create_comment', as: 'blog_create_comment'
 
   get 'test' => 'pages#test'
   get 'castor' => 'pages#castor'
